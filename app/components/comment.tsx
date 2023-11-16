@@ -53,6 +53,14 @@ export default function Comment(props: CommentProps){
   const params = useParams();
   console.log(params)
   useEffect(()=>{
+    setFormData({
+      parentid : id,
+      userid : session?.user?.email ?? '',
+      username: session?.user?.name ?? '',
+      content:''
+    })
+  },[session?.user.name, session?.user.email, id])
+  useEffect(()=>{
     const fetchData = async ()=>{
       const res = await fetch(`/api/comment?id=${params.id}`)
       const data = await res.json(); 
@@ -102,10 +110,10 @@ export default function Comment(props: CommentProps){
             <div className="border-b-2 mt-4">
               <div className="flex">
                 <img src="https://via.placeholder.com/70" alt="1" className="rounded-full"/>
-                <p className="font-semibold m-5 mt-5">작성자 : {e.username}</p>
+                <p key={i} className="font-semibold m-5 mt-5">작성자 : {e.username}</p>
               </div>
               <div className="ml-[90px]">
-                <p>{e.content}</p>
+                <p key={i}>{e.content}</p>
                 <p className="text-xs">{formatDate}</p>
               </div>
             </div>

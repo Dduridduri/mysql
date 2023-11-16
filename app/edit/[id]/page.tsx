@@ -40,7 +40,7 @@ export default function Edit(props:editProps){
       fetchData();
     },[params.id])
 
-    const handleChange = (e: React.ChangeEvent<HTMLFormElement | HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const target = e.target as HTMLInputElement | HTMLTextAreaElement;
       if (target.name === "title") {
         setPostTitle(target.value);

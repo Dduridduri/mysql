@@ -26,18 +26,19 @@ export default function LoginPage() {
             console.log(prevPage)
             setPreUrl(prevPage)
         }
-        console.log(typeof window)
+        
     },[])
     const SignIn = () => {
-      const credentials = {
-        email: email,
-        password: password
-      };            
+        const credentials = {
+            email: email,
+            password: password
+        };            
         signIn('credentials', { ...credentials, callbackUrl:preUrl }); 
     };
 
     if(session && session.user){
         return <p>이미 로그인함</p>
+            
     }
 
     return(

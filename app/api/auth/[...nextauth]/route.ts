@@ -15,6 +15,7 @@ interface User{
   name:string;
   email:string;
   level:string;
+  
 }
 
 interface CustomSession extends Session{
@@ -53,11 +54,12 @@ export const authOptions : any = {
           if(!credentials || !credentials.email || !credentials?.password){
             return null;
           }
-          console.log(results[0].email)
-          if(!userResult[0].email || !userResult.password){
+          // console.log(results[0].email)
+          if(!userResult.email || !userResult.password){
             console.log("해당 사용자가 없습니다");
             return null
           }
+          
           const pwCheck =  bcrypt.compare(credentials.password,userResult?.password)
           console.log(pwCheck)
           if(!pwCheck){
@@ -70,6 +72,7 @@ export const authOptions : any = {
             email: userResult.email,
             level: userResult.level
           }
+          console.log(user)
           return user;
         } catch (error) {
           return null
@@ -102,9 +105,9 @@ export const authOptions : any = {
     }
   },
   secret: `${process.env.SECRET}`,
-  pages:{
-    signIn: '/login'
-  }
+  // pages:{
+  //   signIn: '/login'
+  // }
 }
 
 const handler = NextAuth(authOptions);

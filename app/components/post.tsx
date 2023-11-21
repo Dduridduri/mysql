@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, {useEffect, useState} from 'react'
+import Search from './serch';
 
 interface PostList {
   id : number;
@@ -96,8 +97,9 @@ export default function Post() {
       })
     }
     {page <= lastPage && <button className='bg-white border px-1.5 py-1 rounded text-sm' onClick={()=>{nextPage()}}>다음</button>}
+    <Search/>
     </div>
-    <p>현재페이지 : {page}</p>
+    
     </>
     
   )

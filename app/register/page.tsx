@@ -7,6 +7,7 @@ interface formType{
   email :string;
   password: string;
   name: string;
+  nickname: string;
 }
 
 // const session =  getServerSession(authOptions)
@@ -16,7 +17,8 @@ export default function Register(){
   const [formData, setFormData] = useState<formType>({
     email :'',
     password: '',
-    name: ''
+    name: '',
+    nickname:''
     })
   const [message, setMessage] = useState<string>("")
   const changeEvent = (e: React.ChangeEvent<HTMLInputElement>) =>{
@@ -57,14 +59,17 @@ export default function Register(){
   
   return(
     <>
-      
-      <form onSubmit={submitEvent} method="POST">
-        <input onChange={changeEvent} type="text" placeholder="이메일" name="email" required />
-        <input onChange={changeEvent} type="password" placeholder="비밀번호" name="password" required />
-        <input onChange={changeEvent} type="text" placeholder="이름" name="name" required />
-        <button type="submit">가입</button>
+    <div className="border w-1/2 mx-auto ">   
+      <h3 className="text-2xl">회원가입 페이지</h3>
+      <form onSubmit={submitEvent} method="POST" className=" w-1/2 mx-auto ">
+        <p className="font-bold">이메일</p><input onChange={changeEvent} type="text" placeholder="이메일" name="email" className="mb-2 border" required /><br />
+        <p className="font-bold">비밀번호</p><input onChange={changeEvent} type="password" placeholder="비밀번호" name="password" className="mb-2 border" required /><br />
+        <p className="font-bold">이름</p><input onChange={changeEvent} type="text" placeholder="이름" name="name" className="mb-2 border" required /><br />
+        <p className="font-bold">닉네임</p><input onChange={changeEvent} type="text" placeholder="닉네임" name="nickname" className="mb-2 border" required /><br />
+        <button type="submit" className="bg-[#007bff] text-white w-1/2">가입</button>
       </form>
       <p>{message}</p>
+    </div> 
     </>
   )
 }

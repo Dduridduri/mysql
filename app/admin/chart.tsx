@@ -35,16 +35,16 @@ export default function ChartCom(){
     ]
   }
   const options = {
-    animations: {
-      tension: {
-        duration: 1000,
-        easing: 'easeOutElastic',
-        from: 0,
-        to: 1,
-        loop: true,
-        responsive: true,
-      }
-    },
+    // animations: {
+    //   tension: {
+    //     duration: 1000,
+    //     easing: 'easeOutElastic',
+    //     from: 0,
+    //     to: 1,
+    //     loop: true,
+    //     responsive: true,
+    //   }
+    // },
     scales : {
       y:{
         beginAtZero: true

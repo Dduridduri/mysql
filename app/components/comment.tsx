@@ -49,9 +49,8 @@ export default function Comment(props: CommentProps){
   const commentValue = (e: React.ChangeEvent<HTMLInputElement>)=>{
     setFormData({...formData, [e.target.name]:e.target.value});
   }
-  // console.log(formData)
   const params = useParams();
-  // console.log(params)
+
   useEffect(()=>{
     setFormData({
       parentid : id,
@@ -63,8 +62,7 @@ export default function Comment(props: CommentProps){
   useEffect(()=>{
     const fetchData = async ()=>{
       const res = await fetch(`/api/comment?id=${params.id}`)
-      const data = await res.json(); 
-      // console.log(data)
+      const data = await res.json();  
       SetTotalComment(data.result)
     }
     fetchData()
@@ -121,7 +119,7 @@ export default function Comment(props: CommentProps){
           )
         })
       }
-      <div className="flex h-10 justify-between">        
+      <div className="flex h-10 justify-between my-5">        
         <input name='content' type="text" className="border p-2 border-black basis-[90%]" onChange={commentValue} />
         <button onClick={cmtSubmit} className="bg-slate-400 py-2 px-5 text-white rounded mx-4 text-xs">댓글등록</button>
       </div>

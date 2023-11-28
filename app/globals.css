@@ -2,3 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+.widget{
+  border: 1px solid rbga(151,157,172,0.28);
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 0 0 rbga(96,96,96,0);
+}

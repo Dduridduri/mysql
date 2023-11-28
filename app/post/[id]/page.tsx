@@ -42,7 +42,7 @@ export default async function Detail({
   params?: {id?:number}
 }){
   const getIp = await Getip();
-  const userIp = getIp.data;
+  const userIp = getIp.data.ip;
   console.log(userIp)
   const postId = params?.id !== undefined ? params.id : 1;
   const [results] = await db.query<RowDataPacket[]>('select * from dduridduri.board where id = ?', [postId])
@@ -88,12 +88,10 @@ export default async function Detail({
 
 
   return(
-    <>
-  
+    <>  
     {
       results.length > 0 && (
         <>
-
           <div className="w-4/5 mx-auto ">
             <h3 className="text-5xl font-bold">게시글</h3>
             <div className="flex justify-center border-b-2 mt-10 font-semibold text-2xl">
